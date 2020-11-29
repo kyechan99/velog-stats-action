@@ -2,7 +2,7 @@ name: Update Stats
 on:
   push:
     branches:
-      - master
+      - main
   schedule:
     - cron: "0 0 * * *"
 jobs:
@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Update Stats
-        uses: kyechan99/velog-stats@master
+        uses: kyechan99/velog-stats@main
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           GIST_ID: 2ca0ced45ecf85f7e6ac1fbf04b14ac5
