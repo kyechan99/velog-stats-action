@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/kyechan99/velog-stats#readme",
   "dependencies": {
-    "@octokit/rest": "^18.0.9"
+    "@octokit/rest": "^18.0.9",
+    "rss-parser": "^3.9.0"
   }
 }

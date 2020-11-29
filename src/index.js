@@ -1,12 +1,18 @@
-// import { resolve } from 'path';
-// import { config } from 'dotenv';
+let RSSParser = require('rss-parser');
+let parser = new RSSParser();
 const { Octokit } = require('@octokit/rest');
 
-// import githubQuery from './githubQuery';
-// import generateBarChart from './generateBarChart';
-// import { userInfoQuery, createContributedRepoQuery, createCommittedDateQuery } from './queries';
-
-(async() => {
+( async() => {
+	let velogContent = '';
+	
+	let feed = await parser.parseURL('https://v2.velog.io/rss/velopert');
+	console.log(feed.title);
+	
+	feed.items.slice(0, 5).forEach(item => {
+		console.log(item.title + ':' + item.link)
+		velogContent += `[${item.title}](${item.link})\n`;
+	});
+	
 	// GH_TOKEN 인증
 	const octokit = new Octokit({
 		auth: `token ${process.env.GH_TOKEN}`
@@ -27,7 +33,7 @@ const { Octokit } = require('@octokit/rest');
 			[filename]: {
 				filename: "\'s Velog Stats",
 				// content: lines.join('\n'),
-				content: 'THIS IS TEST'
+				content: velogContent
 			},
 		},
 	});
