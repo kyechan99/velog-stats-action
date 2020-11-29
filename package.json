@@ -1,0 +1,26 @@
+{
+  "name": "velog-stats",
+  "version": "1.0.0",
+  "description": "velog stats",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "node src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://368bb9a414e24d49369ce746c7082a6e252ae234@github.com/kyechan99/velog-stats.git"
+  },
+  "keywords": [
+    "velog-stats"
+  ],
+  "author": "kyechan99@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kyechan99/velog-stats/issues"
+  },
+  "homepage": "https://github.com/kyechan99/velog-stats#readme",
+  "dependencies": {
+    "@octokit/rest": "^18.0.9"
+  }
+}

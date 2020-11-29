@@ -1,0 +1,9 @@
+name: "velog-stats"
+author: "kyechan99"
+description: "velog-stats"
+runs:
+  using: "node12"
+  main: "src/index.js"
+branding:
+  icon: "star"
+  color: "black"
