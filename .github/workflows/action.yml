@@ -2,7 +2,7 @@ name: Action Stats
 on:
   push:
     branches:
-      - master
+      - main
 jobs:
   action-stats:
     runs-on: ubuntu-latest
