@@ -21,7 +21,9 @@
   },
   "homepage": "https://github.com/kyechan99/velog-stats#readme",
   "dependencies": {
+    "@actions/core": "^1.2.6",
     "@octokit/rest": "^18.0.9",
+    "dotenv": "^8.2.0",
     "rss-parser": "^3.9.0"
   }
 }
