@@ -1,17 +1,17 @@
-name: Action Stats
-on:
-  push:
-    branches:
-      - main
-jobs:
-  action-stats:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Action Stats
-        uses: kyechan99/velog-stats@main
-        with:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-          GIST_ID: ${{ secrets.GIST_ID }}
-          VELOG_ID: kyechan99
-          TIMEZONE: Asia/Seoul
+#name: Action Stats
+#on:
+#  push:
+#    branches:
+#      - main
+#jobs:
+#  action-stats:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v2
+#      - name: Action Stats
+#        uses: kyechan99/velog-stats@main
+#        env:
+#          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+#          GIST_ID: ${{ secrets.GIST_ID }}
+#        with:
+#          VELOG_ID: kyechan99
