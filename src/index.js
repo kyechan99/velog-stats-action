@@ -29,7 +29,7 @@ async function updateREADME() {
 	try {
 		let feed = await parser.parseURL(`https://v2.velog.io/rss/${_velogID}`);
 		feed.items.slice(0, 5).forEach(item => {
-			curVelogContent += `[${item.title}](${item.link})\n\n`;
+			curVelogContent += `- [${item.title}](${item.link})\n\n`;
 		});
 	} catch (err) {
         console.error(`틀린 _velogID 혹은 RSS 주소\n${err}`);
@@ -54,11 +54,13 @@ async function updateREADME() {
 	// <!--VELOG:START--> 와 <!--VELOG:END--> 사이 내용 가져오기
     try {
 		beforeVelogContent = /<!--VELOG:START-->([^;]+)<!--VELOG:END-->/.exec(readmeContent)[1];
+		beforeVelogContent = '<!--VELOG:START-->\n' + beforeVelogContent + '\n<!--VELOG:END-->';
+		curVelogContent = '<!--VELOG:START-->\n' + curVelogContent + '\n<!--VELOG:END-->';
     } catch (err) {
         console.error(`Worng VELOG:START , VELOG:END\n${err}`);
 		return;
     }
-
+	
 	// velog 에 새로 올린 글이 있다면 취소. (커밋을 새로 올릴 필요가 없기 때문)
 	if (beforeVelogContent == curVelogContent)
 		return;
