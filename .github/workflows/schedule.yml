@@ -16,4 +16,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           GIST_ID: ${{ secrets.GIST_ID }}
         with:
-          VELOG_ID: kyechan99
+          VELOG_ID: "kyechan99"
+          GITHUB_ID: "kyechan99"
+          GITHUB_EMAIL: "kyechan99@gmail.com"
+          README_PATH: "README.md"

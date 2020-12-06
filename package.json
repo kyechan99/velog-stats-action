@@ -23,6 +23,7 @@
   "dependencies": {
     "@actions/core": "^1.2.6",
     "@octokit/rest": "^18.0.9",
+    "js-base64": "^3.6.0",
     "rss-parser": "^3.9.0"
   }
 }
