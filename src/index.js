@@ -72,7 +72,7 @@ async function updateREADME() {
 		return;
 	
 	// 이전글과 현재글을 변경
-	readmeContent = Base64.encode(readmeContent.replace(beforeVelogContent, curVelogContent));
+	readmeContent = Base64.encode(readmeContent.replace(replaceTarget, curVelogContent));
 	
 	try {
 		// README 파일 업데이트
