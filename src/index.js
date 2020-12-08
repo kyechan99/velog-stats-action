@@ -50,17 +50,23 @@ async function updateREADME() {
 	const readmeSHA = readmeContent.data.sha;
 	readmeContent = Base64.decode(readmeContent.data.content);
 	
+	let replaceTarget;
 	let beforeVelogContent;
-	// <!--VELOG:START--> 와 <!--VELOG:END--> 사이 내용 가져오기
     try {
+		// <!--VELOG:START--> 와 <!--VELOG:END--> 사이 내용 가져오기
 		beforeVelogContent = /<!--VELOG:START-->([^;]+)<!--VELOG:END-->/.exec(readmeContent)[1];
-		beforeVelogContent = '<!--VELOG:START-->\n' + beforeVelogContent + '\n<!--VELOG:END-->';
-		curVelogContent = '<!--VELOG:START-->\n' + curVelogContent + '\n<!--VELOG:END-->';
+		
+		// 아무 내용도 안들어 갔단 뜻 (초기 빌드거나 VELOG 에 아무 내용이 없을때)
+		if (beforeVelogContent.trim() == '')
+			beforeVelogContent = '';
+		
+		replaceTarget = '<!--VELOG:START-->\n' + beforeVelogContent + '<!--VELOG:END-->';
+		curVelogContent = '<!--VELOG:START-->\n' + curVelogContent + '<!--VELOG:END-->';
     } catch (err) {
         console.error(`Worng VELOG:START , VELOG:END\n${err}`);
 		return;
     }
-	
+		
 	// velog 에 새로 올린 글이 있다면 취소. (커밋을 새로 올릴 필요가 없기 때문)
 	if (beforeVelogContent == curVelogContent)
 		return;
