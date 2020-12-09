@@ -14,9 +14,10 @@ const {
 
 // WITH 값 가져오기
 const _velogID = core.getInput('VELOG_ID');
-const _ownerID = core.getInput('GITHUB_ID') || 'kyechan99';
-const _ownerEMAIL = core.getInput('GITHUB_EMAIL') || 'kyechan99@gmail.com';
+const _ownerID = core.getInput('GITHUB_ID') || '';
+const _ownerEMAIL = core.getInput('GITHUB_EMAIL') || 'kyechan99@gmail.com'
 const _readmePath = core.getInput('README_PATH') || 'README.md';
+const _commitMSG = core.getInput('COMMIT_MSG') || 'Update Acitivty README';
 
 // GH_TOKEN 인증
 const octokit = new Octokit({
@@ -68,8 +69,10 @@ async function updateREADME() {
     }
 		
 	// velog 에 새로 올린 글이 있다면 취소. (커밋을 새로 올릴 필요가 없기 때문)
-	if (beforeVelogContent == curVelogContent)
+	if (replaceTarget == curVelogContent) {
+		console.log('내용이 이전과 같음. 커밋을 올리지 않음.');
 		return;
+	}
 	
 	// 이전글과 현재글을 변경
 	readmeContent = Base64.encode(readmeContent.replace(replaceTarget, curVelogContent));
@@ -80,7 +83,7 @@ async function updateREADME() {
 			owner: _ownerID,
 			repo: _ownerID,
 			path: _readmePath,
-			message: 'Update Acitivty README',
+			message: _commitMSG,
 			content: readmeContent,
 			sha: readmeSHA,
 			committer: {
