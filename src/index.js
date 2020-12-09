@@ -33,7 +33,7 @@ async function updateREADME() {
 			curVelogContent += `- [${item.title}](${item.link})\n\n`;
 		});
 	} catch (err) {
-        console.error(`틀린 _velogID 혹은 RSS 주소\n${err}`);
+        console.error(`틀린 VELOG_ID 혹은 RSS 주소\n(VELOG_ID 값이 정확하다면 RSS 주소가 변경되었을 가능성이 있습니다.)\n${err}`);
     }
 	
 	// README 파일 정보 가져오기
@@ -45,7 +45,7 @@ async function updateREADME() {
 			path: _readmePath
 		});
     } catch (err) {
-        console.error(`틀린 Gist 값\n${err}`);
+        console.error(`틀린 GITHUB_ID 혹은 README_PATH 경로 값\n${err}`);
     }
 	
 	const readmeSHA = readmeContent.data.sha;
@@ -64,7 +64,7 @@ async function updateREADME() {
 		replaceTarget = '<!--VELOG:START-->\n' + beforeVelogContent + '<!--VELOG:END-->';
 		curVelogContent = '<!--VELOG:START-->\n' + curVelogContent + '<!--VELOG:END-->';
     } catch (err) {
-        console.error(`Worng VELOG:START , VELOG:END\n${err}`);
+        console.error(`틀린 VELOG:START , VELOG:END 선언\n${err}`);
 		return;
     }
 		
@@ -96,7 +96,7 @@ async function updateREADME() {
 			}
 		})
     } catch (error) {
-        console.error(`Unable to update README : ${error}`);
+        console.error(`README 가 정상적으로 변경되지 못했습니다. : ${error}`);
     }
 }
  
