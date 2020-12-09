@@ -15,7 +15,7 @@ const {
 // WITH 값 가져오기
 const _velogID = core.getInput('VELOG_ID');
 const _ownerID = core.getInput('GITHUB_ID') || '';
-const _ownerEMAIL = core.getInput('GITHUB_EMAIL') || 'kyechan99@gmail.com'
+const _ownerEMAIL = core.getInput('GITHUB_EMAIL') || ''
 const _readmePath = core.getInput('README_PATH') || 'README.md';
 const _commitMSG = core.getInput('COMMIT_MSG') || 'Update Acitivty README';
 
@@ -69,7 +69,7 @@ async function updateREADME() {
     }
 		
 	// velog 에 새로 올린 글이 있다면 취소. (커밋을 새로 올릴 필요가 없기 때문)
-	if (replaceTarget == curVelogContent) {
+	if (replaceTarget.trim() == curVelogContent.trim()) {
 		console.log('내용이 이전과 같음. 커밋을 올리지 않음.');
 		return;
 	}

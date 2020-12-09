@@ -17,6 +17,7 @@ jobs:
           GIST_ID: ${{ secrets.GIST_ID }}
         with:
           VELOG_ID: "kyechan99"
-          GITHUB_ID: "kyechan99"
-          GITHUB_EMAIL: "kyechan99@gmail.com"
+          GITHUB_ID: ""
+          GITHUB_EMAIL: ""
           README_PATH: "README.md"
+          COMMIT_MSG: "Update Acitivty README"
