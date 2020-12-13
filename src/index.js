@@ -18,11 +18,31 @@ const _ownerID = core.getInput('GITHUB_ID') || '';
 const _ownerEMAIL = core.getInput('GITHUB_EMAIL') || ''
 const _readmePath = core.getInput('README_PATH') || 'README.md';
 const _commitMSG = core.getInput('COMMIT_MSG') || 'Update Acitivty README';
+const _type = core.getInput('TYPE') || 'NONE';
 
 // GH_TOKEN 인증
 const octokit = new Octokit({
 	auth: `token ${_githubToken}`
 });
+
+function contentType(idx) {
+	let liDesign = '';
+	switch(_type) {
+		case 'NONE':
+			liDesign = '';
+			break;
+		case 'DOT':
+			liDesign = '- ';
+			break;
+		case 'NUM':
+			liDesign = `${idx+1}. `;
+			break;
+		default:
+			liDesign = `${_type} `;
+			break;
+	}
+	return liDesign;
+}
 
 async function updateREADME() {	
 	// Velog 최근 글 목록 가져오기
@@ -30,7 +50,7 @@ async function updateREADME() {
 	try {
 		let feed = await parser.parseURL(`https://v2.velog.io/rss/${_velogID}`);
 		feed.items.slice(0, 5).forEach(item => {
-			curVelogContent += `- [${item.title}](${item.link})\n\n`;
+			curVelogContent += `${contentType(idx)}[${item.title}](${item.link})\n\n`;
 		});
 	} catch (err) {
         console.error(`틀린 VELOG_ID 혹은 RSS 주소\n(VELOG_ID 값이 정확하다면 RSS 주소가 변경되었을 가능성이 있습니다.)\n${err}`);
