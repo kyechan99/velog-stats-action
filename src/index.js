@@ -42,6 +42,7 @@ function contentType(idx) {
 			break;
 	}
 	return liDesign;
+	
 }
 
 async function updateREADME() {	
@@ -49,7 +50,7 @@ async function updateREADME() {
 	let curVelogContent = '';
 	try {
 		let feed = await parser.parseURL(`https://v2.velog.io/rss/${_velogID}`);
-		feed.items.slice(0, 5).forEach(item => {
+		feed.items.slice(0, 5).forEach((item, idx) => {
 			curVelogContent += `${contentType(idx)}[${item.title}](${item.link})\n\n`;
 		});
 	} catch (err) {
@@ -79,9 +80,9 @@ async function updateREADME() {
 		
 		// 아무 내용도 안들어 갔단 뜻 (초기 빌드거나 VELOG 에 아무 내용이 없을때)
 		if (beforeVelogContent.trim() == '')
-			beforeVelogContent = '';
+			beforeVelogContent = '\n';
 		
-		replaceTarget = '<!--VELOG:START-->\n' + beforeVelogContent + '<!--VELOG:END-->';
+		replaceTarget = '<!--VELOG:START-->' + beforeVelogContent + '<!--VELOG:END-->';
 		curVelogContent = '<!--VELOG:START-->\n' + curVelogContent + '<!--VELOG:END-->';
     } catch (err) {
         console.error(`틀린 VELOG:START , VELOG:END 선언\n${err}`);
