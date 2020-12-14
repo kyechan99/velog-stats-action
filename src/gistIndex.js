@@ -1,6 +1,6 @@
 /**
  * GIST 파일을 변경할때 사용하는 파일입니다.
- * 제작은 됬는데 GitHub 측이 프로필 pinned-gist에서 MARKDOWN 형태를 지원하지 않아 파일만 남깁니다.
+ * 제작은 됐는데 GitHub 측이 프로필 pinned-gist에서 MARKDOWN 형태를 지원하지 않아 파일만 남깁니다.
  */
 "use strict";
 
