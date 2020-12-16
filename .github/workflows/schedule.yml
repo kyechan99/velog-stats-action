@@ -21,4 +21,5 @@ jobs:
           GITHUB_EMAIL: "kyechan99@gmail.com"
           README_PATH: "README.md"
           COMMIT_MSG: "Update Acitivty README"
+          LIMIT: 5
           TYPE: "NUM"

@@ -18,6 +18,7 @@ const _ownerID = core.getInput('GITHUB_ID') || '';
 const _ownerEMAIL = core.getInput('GITHUB_EMAIL') || ''
 const _readmePath = core.getInput('README_PATH') || 'README.md';
 const _commitMSG = core.getInput('COMMIT_MSG') || 'Update Acitivty README';
+const _limit = core.getInput('LIMIT') || 5;
 const _type = core.getInput('TYPE') || 'NONE';
 
 // GH_TOKEN 인증
@@ -50,7 +51,7 @@ async function updateREADME() {
 	let curVelogContent = '';
 	try {
 		let feed = await parser.parseURL(`https://v2.velog.io/rss/${_velogID}`);
-		feed.items.slice(0, 5).forEach((item, idx) => {
+		feed.items.slice(0, _limit).forEach((item, idx) => {
 			curVelogContent += `${contentType(idx)}[${item.title}](${item.link})\n\n`;
 		});
 	} catch (err) {
