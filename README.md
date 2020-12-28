@@ -1,5 +1,5 @@
 # Velog Stats
-개발자 블로그 서비스, [velog](https://velog.io/) 에 최근 작성한 포스트들을 표시해줍니다.
+개발자 블로그 서비스, [velog](https://velog.io/) 에 최근 작성한 포스트들을 내 README에 표시해줍니다. ([예시](https://github.com/kyechan99/kyechan99))
 
 ![Update Stats](https://github.com/kyechan99/velog-stats/workflows/Update%20Stats/badge.svg)
 
@@ -40,8 +40,9 @@ Fork 한 레포에 다음과 같은 주석을 입력해주세요.
 <!--VELOG:END-->
 ```
 
-START 와 END 사이에 최근 포스트 목록을 작성해줍니다.
+현 acitivity가 주석으로된 START 와 END 사이에 최근 포스트 목록을 작성해줍니다.
 
+### 번외
 ```html
 <details>
 <summary>VELOG STATS</summary>  
